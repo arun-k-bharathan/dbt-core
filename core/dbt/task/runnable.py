@@ -264,6 +264,7 @@ class GraphRunnableTask(ManifestTask):
 
         This does still go through the callback path for result collection.
         """
+        self.config.args.single_threaded = True
         if self.config.args.single_threaded:
             callback(self.call_runner(*args))
         else:

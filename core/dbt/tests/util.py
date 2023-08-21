@@ -73,6 +73,7 @@ def run_dbt(args: List[str] = None, expect_pass=True):
     if args is None:
         args = ["run"]
 
+    args = ["--debug"] + args + ["--threads=1"]
     print("\n\nInvoking dbt with {}".format(args))
     res, success = handle_and_check(args)
 
