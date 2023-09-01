@@ -1,3 +1,4 @@
 -e ./core
 -e ./plugins/postgres
+-e /home/arun/Documents/python/dbt/bigquery
 -e ./tests/adapter

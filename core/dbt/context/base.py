@@ -33,6 +33,10 @@ import itertools
 
 # See the `contexts` module README for more information on how contexts work
 
+# import debugpy  # type: ignore
+# debugpy.listen(5678)
+# debugpy.wait_for_client()
+
 
 def get_pytz_module_context() -> Dict[str, Any]:
     context_exports = pytz.__all__  # type: ignore
@@ -327,6 +331,7 @@ class BaseContext(metaclass=ContextMeta):
 
             frame = sys._getframe(3)
             ipdb.set_trace(frame)
+            # debugpy.breakpoint()
             return ""
 
     @contextmember("return")
