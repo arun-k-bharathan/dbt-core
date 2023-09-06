@@ -1,0 +1,134 @@
+[
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('model.dbtlearn.src_hosts', <dbt.adapters.base.query_headers.NodeWrapper object at 0x7f0fe82aded0>)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__materialization_table_bigquery",
+        "macro_arguments": "('supported_languages',)",
+        "args": "()",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__run_hooks",
+        "macro_arguments": "('hooks', 'inside_transaction')",
+        "args": "([],)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__statement",
+        "macro_arguments": "('name', 'fetch_result', 'auto_begin', 'language')",
+        "args": "('main',)",
+        "kwargs": "{'language': 'sql', 'caller': <Macro anonymous>}"
+    },
+    {
+        "macro_name": "dbt_macro__create_table_as",
+        "macro_arguments": "('temporary', 'relation', 'compiled_code', 'language')",
+        "args": "(False, <BigQueryRelation `visitran-bq`.`dbttests`.`src_hosts`>, 'WITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n`visitran-bq`.`dbttests`.`raw_hosts`\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts', 'sql')",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__bigquery__create_table_as",
+        "macro_arguments": "('temporary', 'relation', 'compiled_code', 'language')",
+        "args": "(False, <BigQueryRelation `visitran-bq`.`dbttests`.`src_hosts`>, 'WITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n`visitran-bq`.`dbttests`.`raw_hosts`\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts')",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__partition_by",
+        "macro_arguments": "('partition_config',)",
+        "args": "(None,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__cluster_by",
+        "macro_arguments": "('raw_cluster_by',)",
+        "args": "(None,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__bigquery_table_options",
+        "macro_arguments": "('config', 'node', 'temporary')",
+        "args": "(<dbt.context.providers.RuntimeConfigObject object at 0x7f0fe8062b10>, {'database': 'visitran-bq', 'schema': 'dbttests', 'name': 'src_hosts', 'resource_type': 'model', 'package_name': 'dbtlearn', 'path': 'src/src_hosts.sql', 'original_file_path': 'models/src/src_hosts.sql', 'unique_id': 'model.dbtlearn.src_hosts', 'fqn': ['dbtlearn', 'src', 'src_hosts'], 'alias': 'src_hosts', 'checksum': {'name': 'sha256', 'checksum': 'd6be185af16944355554f63c193cc1e7290ec0cb1fde4f69c753ff0381804822'}, 'config': {'enabled': True, 'tags': [], 'meta': {}, 'materialized': 'table', 'persist_docs': {}, 'quoting': {}, 'column_types': {}, 'on_schema_change': 'ignore', 'on_configuration_change': 'apply', 'grants': {}, 'packages': [], 'docs': {'show': True}, 'contract': {'enforced': False}, 'post-hook': [], 'pre-hook': []}, 'tags': [], 'description': '', 'columns': {}, 'meta': {}, 'docs': {'show': True}, 'deferred': False, 'unrendered_config': {'materialized': 'table'}, 'created_at': 1693979731.2353003, 'config_call_dict': {}, 'relation_name': '`visitran-bq`.`dbttests`.`src_hosts`', 'raw_code': \"WITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n{{source('airbnb', 'hosts')}}\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts\", 'language': 'sql', 'refs': [], 'sources': [['airbnb', 'hosts']], 'metrics': [], 'depends_on': {'macros': [], 'nodes': ['source.dbtlearn.airbnb.hosts']}, 'compiled_path': 'target/compiled/dbtlearn/models/src/src_hosts.sql', 'compiled': True, 'compiled_code': 'WITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n`visitran-bq`.`dbttests`.`raw_hosts`\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts', 'extra_ctes_injected': True, 'extra_ctes': [], 'contract': {'enforced': False}, 'access': 'protected', 'constraints': [], 'compiled_sql': 'WITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n`visitran-bq`.`dbttests`.`raw_hosts`\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts'}, False)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__bigquery_options",
+        "macro_arguments": "('opts',)",
+        "args": "({},)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__run_hooks",
+        "macro_arguments": "('hooks', 'inside_transaction')",
+        "args": "([],)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__should_revoke",
+        "macro_arguments": "('existing_relation', 'full_refresh_mode')",
+        "args": "(None,)",
+        "kwargs": "{'full_refresh_mode': True}"
+    },
+    {
+        "macro_name": "dbt_macro__apply_grants",
+        "macro_arguments": "('relation', 'grant_config', 'should_revoke')",
+        "args": "(<BigQueryRelation `visitran-bq`.`dbttests`.`src_hosts`>, {}, False)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__apply_grants",
+        "macro_arguments": "('relation', 'grant_config', 'should_revoke')",
+        "args": "(<BigQueryRelation `visitran-bq`.`dbttests`.`src_hosts`>, {}, False)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__persist_docs",
+        "macro_arguments": "('relation', 'model', 'for_relation', 'for_columns')",
+        "args": "(<BigQueryRelation `visitran-bq`.`dbttests`.`src_hosts`>, {'database': 'visitran-bq', 'schema': 'dbttests', 'name': 'src_hosts', 'resource_type': 'model', 'package_name': 'dbtlearn', 'path': 'src/src_hosts.sql', 'original_file_path': 'models/src/src_hosts.sql', 'unique_id': 'model.dbtlearn.src_hosts', 'fqn': ['dbtlearn', 'src', 'src_hosts'], 'alias': 'src_hosts', 'checksum': {'name': 'sha256', 'checksum': 'd6be185af16944355554f63c193cc1e7290ec0cb1fde4f69c753ff0381804822'}, 'config': {'enabled': True, 'tags': [], 'meta': {}, 'materialized': 'table', 'persist_docs': {}, 'quoting': {}, 'column_types': {}, 'on_schema_change': 'ignore', 'on_configuration_change': 'apply', 'grants': {}, 'packages': [], 'docs': {'show': True}, 'contract': {'enforced': False}, 'post-hook': [], 'pre-hook': []}, 'tags': [], 'description': '', 'columns': {}, 'meta': {}, 'docs': {'show': True}, 'deferred': False, 'unrendered_config': {'materialized': 'table'}, 'created_at': 1693979731.2353003, 'config_call_dict': {}, 'relation_name': '`visitran-bq`.`dbttests`.`src_hosts`', 'raw_code': \"WITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n{{source('airbnb', 'hosts')}}\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts\", 'language': 'sql', 'refs': [], 'sources': [['airbnb', 'hosts']], 'metrics': [], 'depends_on': {'macros': [], 'nodes': ['source.dbtlearn.airbnb.hosts']}, 'compiled_path': 'target/compiled/dbtlearn/models/src/src_hosts.sql', 'compiled': True, 'compiled_code': 'WITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n`visitran-bq`.`dbttests`.`raw_hosts`\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts', 'extra_ctes_injected': True, 'extra_ctes': [], 'contract': {'enforced': False}, 'access': 'protected', 'constraints': [], 'compiled_sql': 'WITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n`visitran-bq`.`dbttests`.`raw_hosts`\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts'})",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__bigquery__persist_docs",
+        "macro_arguments": "('relation', 'model', 'for_relation', 'for_columns')",
+        "args": "(<BigQueryRelation `visitran-bq`.`dbttests`.`src_hosts`>, {'database': 'visitran-bq', 'schema': 'dbttests', 'name': 'src_hosts', 'resource_type': 'model', 'package_name': 'dbtlearn', 'path': 'src/src_hosts.sql', 'original_file_path': 'models/src/src_hosts.sql', 'unique_id': 'model.dbtlearn.src_hosts', 'fqn': ['dbtlearn', 'src', 'src_hosts'], 'alias': 'src_hosts', 'checksum': {'name': 'sha256', 'checksum': 'd6be185af16944355554f63c193cc1e7290ec0cb1fde4f69c753ff0381804822'}, 'config': {'enabled': True, 'tags': [], 'meta': {}, 'materialized': 'table', 'persist_docs': {}, 'quoting': {}, 'column_types': {}, 'on_schema_change': 'ignore', 'on_configuration_change': 'apply', 'grants': {}, 'packages': [], 'docs': {'show': True}, 'contract': {'enforced': False}, 'post-hook': [], 'pre-hook': []}, 'tags': [], 'description': '', 'columns': {}, 'meta': {}, 'docs': {'show': True}, 'deferred': False, 'unrendered_config': {'materialized': 'table'}, 'created_at': 1693979731.2353003, 'config_call_dict': {}, 'relation_name': '`visitran-bq`.`dbttests`.`src_hosts`', 'raw_code': \"WITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n{{source('airbnb', 'hosts')}}\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts\", 'language': 'sql', 'refs': [], 'sources': [['airbnb', 'hosts']], 'metrics': [], 'depends_on': {'macros': [], 'nodes': ['source.dbtlearn.airbnb.hosts']}, 'compiled_path': 'target/compiled/dbtlearn/models/src/src_hosts.sql', 'compiled': True, 'compiled_code': 'WITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n`visitran-bq`.`dbttests`.`raw_hosts`\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts', 'extra_ctes_injected': True, 'extra_ctes': [], 'contract': {'enforced': False}, 'access': 'protected', 'constraints': [], 'compiled_sql': 'WITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n`visitran-bq`.`dbttests`.`raw_hosts`\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts'}, True, True)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    }
+]

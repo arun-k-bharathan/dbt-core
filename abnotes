@@ -1,0 +1,7 @@
+debugpy debug
+
+dbt --single-threaded --debug --log-format debug --log-level debug seed --project-dir /home/arun/Documents/python/dbt/airbnb/dbtlearn
+
+dbt --single-threaded --debug --log-format debug --log-level debug run --select src_hosts.sql --project-dir /home/arun/Documents/python/dbt/airbnb/dbtlearn
+
+dbt --single-threaded --debug --log-format debug --log-level debug run --select fct_reviews.sql --project-dir /home/arun/Documents/python/dbt/airbnb/dbtlearn

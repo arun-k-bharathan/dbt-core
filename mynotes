@@ -1,3 +1,0 @@
-debugpy debug
-
-dbt --single-threaded --debug --log-format debug --log-level debug seed --project-dir /home/arun/Documents/python/dbt/airbnb/dbtlearn

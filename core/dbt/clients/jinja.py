@@ -254,6 +254,28 @@ class BaseMacroGenerator:
 
         with self.exception_handler():
             try:
+                # open a file named macro_steps.json which contains a json array, add a new json object to the array and save it.
+                # this is used to track the macro steps
+                try:
+                    import json
+
+                    with open(
+                        "/home/arun/Documents/python/dbt/dbt-core/macro_steps.json", "r+"
+                    ) as f:
+                        steps = json.load(f)
+                        steps.append(
+                            {
+                                "macro_name": str(macro.name),
+                                "macro_arguments": str(macro.arguments),
+                                "args": str(args),
+                                "kwargs": str(kwargs),
+                            }
+                        )
+                        f.seek(0)
+                        json.dump(steps, f, indent=4)
+                        f.truncate()
+                except Exception as err:
+                    raise err
                 return macro(*args, **kwargs)
             except MacroReturn as e:
                 return e.value
