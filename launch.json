@@ -1,0 +1,58 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: dbtlearn",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/core/dbt/cli/main.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "DBT_TEST_SINGLE_THREADED": "1",
+                "DBT_MACRO_DEBUGGING": "1"
+            },
+            "args": [
+                "--single-threaded",
+                "--debug",
+                "--log-format",
+                "debug",
+                "--log-level",
+                "debug",
+                "run",
+                "--select",
+                "src_hosts.sql",
+                "--project-dir",
+                "/home/arun/Documents/python/dbt/airbnb/dbtlearn"
+            ]
+        },
+        {
+            "name": "Python: Remote Attach",
+            "type": "python",
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": 5678
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "."
+                }
+            ],
+            "justMyCode": false
+        },
+        {
+            "name": "Debug Unit Test",
+            "request": "launch",
+            "purpose": [
+                "debug-test"
+            ],
+            "justMyCode": false,
+            "env": {
+                "DBT_TEST_SINGLE_THREADED": "1",
+                "DBT_MACRO_DEBUGGING": "1"
+            }
+        }
+    ]
+}
