@@ -259,8 +259,11 @@ class BaseMacroGenerator:
                 try:
                     import json
 
-                    with open("/tmp/macro_steps.json", "r+") as f:
-                        steps = json.load(f)
+                    with open("/tmp/macro_steps.json", "a+") as f:
+                        raw = f.read()
+                        if not raw:
+                            raw = "[]"
+                        steps = json.loads(raw)
                         steps.append(
                             {
                                 "macro_name": str(macro.name),
