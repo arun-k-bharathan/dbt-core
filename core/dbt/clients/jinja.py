@@ -259,9 +259,7 @@ class BaseMacroGenerator:
                 try:
                     import json
 
-                    with open(
-                        "/home/arun/Documents/python/dbt/dbt-core/macro_steps.json", "r+"
-                    ) as f:
+                    with open("/tmp/macro_steps.json", "r+") as f:
                         steps = json.load(f)
                         steps.append(
                             {

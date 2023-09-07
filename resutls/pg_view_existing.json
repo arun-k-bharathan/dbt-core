@@ -1,0 +1,338 @@
+[
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__list_schemas",
+        "macro_arguments": "('database',)",
+        "args": "()",
+        "kwargs": "{'database': '\"airbnb\"'}"
+    },
+    {
+        "macro_name": "dbt_macro__postgres__list_schemas",
+        "macro_arguments": "('database',)",
+        "args": "('\"airbnb\"',)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__statement",
+        "macro_arguments": "('name', 'fetch_result', 'auto_begin', 'language')",
+        "args": "('list_schemas',)",
+        "kwargs": "{'fetch_result': True, 'auto_begin': False, 'caller': <Macro anonymous>}"
+    },
+    {
+        "macro_name": "dbt_macro__list_relations_without_caching",
+        "macro_arguments": "('schema_relation',)",
+        "args": "()",
+        "kwargs": "{'schema_relation': <PostgresRelation \"airbnb\".\"dev\">}"
+    },
+    {
+        "macro_name": "dbt_macro__postgres__list_relations_without_caching",
+        "macro_arguments": "('schema_relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__statement",
+        "macro_arguments": "('name', 'fetch_result', 'auto_begin', 'language')",
+        "args": "('list_relations_without_caching',)",
+        "kwargs": "{'fetch_result': True, 'caller': <Macro anonymous>}"
+    },
+    {
+        "macro_name": "dbt_macro__postgres__get_relations",
+        "macro_arguments": "()",
+        "args": "()",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__statement",
+        "macro_arguments": "('name', 'fetch_result', 'auto_begin', 'language')",
+        "args": "('relations',)",
+        "kwargs": "{'fetch_result': True, 'caller': <Macro anonymous>}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('model.dbtlearn.src_hosts', <dbt.adapters.base.query_headers.NodeWrapper object at 0x7fedac3520d0>)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__materialization_view_default",
+        "macro_arguments": "('supported_languages',)",
+        "args": "()",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__load_cached_relation",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__make_intermediate_relation",
+        "macro_arguments": "('base_relation', 'suffix')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__postgres__make_intermediate_relation",
+        "macro_arguments": "('base_relation', 'suffix')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, '__dbt_tmp')",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__postgres__make_relation_with_suffix",
+        "macro_arguments": "('base_relation', 'suffix', 'dstring')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, '__dbt_tmp')",
+        "kwargs": "{'dstring': False}"
+    },
+    {
+        "macro_name": "dbt_macro__load_cached_relation",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_tmp\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__make_backup_relation",
+        "macro_arguments": "('base_relation', 'backup_relation_type', 'suffix')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, <RelationType.View: 'view'>)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__postgres__make_backup_relation",
+        "macro_arguments": "('base_relation', 'backup_relation_type', 'suffix')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, <RelationType.View: 'view'>, '__dbt_backup')",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__postgres__make_relation_with_suffix",
+        "macro_arguments": "('base_relation', 'suffix', 'dstring')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, '__dbt_backup')",
+        "kwargs": "{'dstring': False}"
+    },
+    {
+        "macro_name": "dbt_macro__load_cached_relation",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_backup\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__run_hooks",
+        "macro_arguments": "('hooks', 'inside_transaction')",
+        "args": "([],)",
+        "kwargs": "{'inside_transaction': False}"
+    },
+    {
+        "macro_name": "dbt_macro__drop_relation_if_exists",
+        "macro_arguments": "('relation',)",
+        "args": "(None,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__drop_relation_if_exists",
+        "macro_arguments": "('relation',)",
+        "args": "(None,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__run_hooks",
+        "macro_arguments": "('hooks', 'inside_transaction')",
+        "args": "([],)",
+        "kwargs": "{'inside_transaction': True}"
+    },
+    {
+        "macro_name": "dbt_macro__statement",
+        "macro_arguments": "('name', 'fetch_result', 'auto_begin', 'language')",
+        "args": "('main',)",
+        "kwargs": "{'caller': <Macro anonymous>}"
+    },
+    {
+        "macro_name": "dbt_macro__get_create_view_as_sql",
+        "macro_arguments": "('relation', 'sql')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_tmp\">, '\\nWITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n\"airbnb\".\"raw\".\"raw_hosts\"\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts')",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__get_create_view_as_sql",
+        "macro_arguments": "('relation', 'sql')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_tmp\">, '\\nWITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n\"airbnb\".\"raw\".\"raw_hosts\"\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts')",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__create_view_as",
+        "macro_arguments": "('relation', 'sql')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_tmp\">, '\\nWITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n\"airbnb\".\"raw\".\"raw_hosts\"\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts')",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__create_view_as",
+        "macro_arguments": "('relation', 'sql')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_tmp\">, '\\nWITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n\"airbnb\".\"raw\".\"raw_hosts\"\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts')",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__load_cached_relation",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__rename_relation",
+        "macro_arguments": "('from_relation', 'to_relation')",
+        "args": "()",
+        "kwargs": "{'from_relation': <PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, 'to_relation': <PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_backup\">}"
+    },
+    {
+        "macro_name": "dbt_macro__default__rename_relation",
+        "macro_arguments": "('from_relation', 'to_relation')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, <PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_backup\">)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__statement",
+        "macro_arguments": "('name', 'fetch_result', 'auto_begin', 'language')",
+        "args": "('rename_relation',)",
+        "kwargs": "{'caller': <Macro anonymous>}"
+    },
+    {
+        "macro_name": "dbt_macro__rename_relation",
+        "macro_arguments": "('from_relation', 'to_relation')",
+        "args": "()",
+        "kwargs": "{'from_relation': <PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_tmp\">, 'to_relation': <PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">}"
+    },
+    {
+        "macro_name": "dbt_macro__default__rename_relation",
+        "macro_arguments": "('from_relation', 'to_relation')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_tmp\">, <PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__statement",
+        "macro_arguments": "('name', 'fetch_result', 'auto_begin', 'language')",
+        "args": "('rename_relation',)",
+        "kwargs": "{'caller': <Macro anonymous>}"
+    },
+    {
+        "macro_name": "dbt_macro__should_revoke",
+        "macro_arguments": "('existing_relation', 'full_refresh_mode')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">,)",
+        "kwargs": "{'full_refresh_mode': True}"
+    },
+    {
+        "macro_name": "dbt_macro__copy_grants",
+        "macro_arguments": "()",
+        "args": "()",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__postgres__copy_grants",
+        "macro_arguments": "()",
+        "args": "()",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__apply_grants",
+        "macro_arguments": "('relation', 'grant_config', 'should_revoke')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, {})",
+        "kwargs": "{'should_revoke': False}"
+    },
+    {
+        "macro_name": "dbt_macro__default__apply_grants",
+        "macro_arguments": "('relation', 'grant_config', 'should_revoke')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, {}, False)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__persist_docs",
+        "macro_arguments": "('relation', 'model', 'for_relation', 'for_columns')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, {'database': 'airbnb', 'schema': 'dev', 'name': 'src_hosts', 'resource_type': 'model', 'package_name': 'dbtlearn', 'path': 'src/src_hosts.sql', 'original_file_path': 'models/src/src_hosts.sql', 'unique_id': 'model.dbtlearn.src_hosts', 'fqn': ['dbtlearn', 'src', 'src_hosts'], 'alias': 'src_hosts', 'checksum': {'name': 'sha256', 'checksum': '90d9c02668b862029a9d31818f0136bcae469be33e924ab969916236606ef21d'}, 'config': {'enabled': True, 'tags': [], 'meta': {}, 'materialized': 'view', 'persist_docs': {}, 'quoting': {}, 'column_types': {}, 'on_schema_change': 'ignore', 'on_configuration_change': 'apply', 'grants': {}, 'packages': [], 'docs': {'show': True}, 'contract': {'enforced': False}, 'post-hook': [], 'pre-hook': []}, 'tags': [], 'description': '', 'columns': {}, 'meta': {}, 'docs': {'show': True}, 'deferred': False, 'unrendered_config': {'materialized': 'view'}, 'created_at': 1693813422.2060702, 'config_call_dict': {'materialized': 'view'}, 'relation_name': '\"airbnb\".\"dev\".\"src_hosts\"', 'raw_code': \"{{config(materialized = 'view')}}\\nWITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n{{source('airbnb', 'hosts')}}\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts\", 'language': 'sql', 'refs': [], 'sources': [['airbnb', 'hosts']], 'metrics': [], 'depends_on': {'macros': [], 'nodes': ['source.dbtlearn.airbnb.hosts']}, 'compiled_path': 'target/compiled/dbtlearn/models/src/src_hosts.sql', 'compiled': True, 'compiled_code': '\\nWITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n\"airbnb\".\"raw\".\"raw_hosts\"\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts', 'extra_ctes_injected': True, 'extra_ctes': [], 'contract': {'enforced': False}, 'access': 'protected', 'constraints': [], 'compiled_sql': '\\nWITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n\"airbnb\".\"raw\".\"raw_hosts\"\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts'})",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__persist_docs",
+        "macro_arguments": "('relation', 'model', 'for_relation', 'for_columns')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, {'database': 'airbnb', 'schema': 'dev', 'name': 'src_hosts', 'resource_type': 'model', 'package_name': 'dbtlearn', 'path': 'src/src_hosts.sql', 'original_file_path': 'models/src/src_hosts.sql', 'unique_id': 'model.dbtlearn.src_hosts', 'fqn': ['dbtlearn', 'src', 'src_hosts'], 'alias': 'src_hosts', 'checksum': {'name': 'sha256', 'checksum': '90d9c02668b862029a9d31818f0136bcae469be33e924ab969916236606ef21d'}, 'config': {'enabled': True, 'tags': [], 'meta': {}, 'materialized': 'view', 'persist_docs': {}, 'quoting': {}, 'column_types': {}, 'on_schema_change': 'ignore', 'on_configuration_change': 'apply', 'grants': {}, 'packages': [], 'docs': {'show': True}, 'contract': {'enforced': False}, 'post-hook': [], 'pre-hook': []}, 'tags': [], 'description': '', 'columns': {}, 'meta': {}, 'docs': {'show': True}, 'deferred': False, 'unrendered_config': {'materialized': 'view'}, 'created_at': 1693813422.2060702, 'config_call_dict': {'materialized': 'view'}, 'relation_name': '\"airbnb\".\"dev\".\"src_hosts\"', 'raw_code': \"{{config(materialized = 'view')}}\\nWITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n{{source('airbnb', 'hosts')}}\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts\", 'language': 'sql', 'refs': [], 'sources': [['airbnb', 'hosts']], 'metrics': [], 'depends_on': {'macros': [], 'nodes': ['source.dbtlearn.airbnb.hosts']}, 'compiled_path': 'target/compiled/dbtlearn/models/src/src_hosts.sql', 'compiled': True, 'compiled_code': '\\nWITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n\"airbnb\".\"raw\".\"raw_hosts\"\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts', 'extra_ctes_injected': True, 'extra_ctes': [], 'contract': {'enforced': False}, 'access': 'protected', 'constraints': [], 'compiled_sql': '\\nWITH raw_hosts AS (\\n        SELECT *\\n        FROM\\n\"airbnb\".\"raw\".\"raw_hosts\"\\n    )\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM raw_hosts'}, True, True)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__run_hooks",
+        "macro_arguments": "('hooks', 'inside_transaction')",
+        "args": "([],)",
+        "kwargs": "{'inside_transaction': True}"
+    },
+    {
+        "macro_name": "dbt_macro__drop_relation_if_exists",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_backup\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__drop_relation",
+        "macro_arguments": "('relation',)",
+        "args": "()",
+        "kwargs": "{'relation': <PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_backup\">}"
+    },
+    {
+        "macro_name": "dbt_macro__default__drop_relation",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_backup\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__statement",
+        "macro_arguments": "('name', 'fetch_result', 'auto_begin', 'language')",
+        "args": "('drop_relation',)",
+        "kwargs": "{'auto_begin': False, 'caller': <Macro anonymous>}"
+    },
+    {
+        "macro_name": "dbt_macro__drop_view",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_backup\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__drop_view",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_backup\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__run_hooks",
+        "macro_arguments": "('hooks', 'inside_transaction')",
+        "args": "([],)",
+        "kwargs": "{'inside_transaction': False}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    }
+]

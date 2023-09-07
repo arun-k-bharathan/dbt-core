@@ -1,0 +1,632 @@
+[
+    {
+        "macro_name": "dbt_macro__surrogate_key",
+        "macro_arguments": "('field_list',)",
+        "args": "(['listing_id', 'review_date', 'reviewer_name', 'review_text'],)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__surrogate_key",
+        "macro_arguments": "('field_list',)",
+        "args": "(['listing_id', 'review_date', 'reviewer_name', 'review_text'],)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__type_string",
+        "macro_arguments": "()",
+        "args": "()",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__type_string",
+        "macro_arguments": "()",
+        "args": "()",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__type_string",
+        "macro_arguments": "()",
+        "args": "()",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__type_string",
+        "macro_arguments": "()",
+        "args": "()",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__type_string",
+        "macro_arguments": "()",
+        "args": "()",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__type_string",
+        "macro_arguments": "()",
+        "args": "()",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__type_string",
+        "macro_arguments": "()",
+        "args": "()",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__type_string",
+        "macro_arguments": "()",
+        "args": "()",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__concat",
+        "macro_arguments": "('fields',)",
+        "args": "([\"coalesce(cast(listing_id as TEXT), '')\", \"'-'\", \"coalesce(cast(review_date as TEXT), '')\", \"'-'\", \"coalesce(cast(reviewer_name as TEXT), '')\", \"'-'\", \"coalesce(cast(review_text as TEXT), '')\"],)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__concat",
+        "macro_arguments": "('fields',)",
+        "args": "([\"coalesce(cast(listing_id as TEXT), '')\", \"'-'\", \"coalesce(cast(review_date as TEXT), '')\", \"'-'\", \"coalesce(cast(reviewer_name as TEXT), '')\", \"'-'\", \"coalesce(cast(review_text as TEXT), '')\"],)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__hash",
+        "macro_arguments": "('field',)",
+        "args": "(\"coalesce(cast(listing_id as TEXT), '') || '-' || coalesce(cast(review_date as TEXT), '') || '-' || coalesce(cast(reviewer_name as TEXT), '') || '-' || coalesce(cast(review_text as TEXT), '')\",)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__hash",
+        "macro_arguments": "('field',)",
+        "args": "(\"coalesce(cast(listing_id as TEXT), '') || '-' || coalesce(cast(review_date as TEXT), '') || '-' || coalesce(cast(reviewer_name as TEXT), '') || '-' || coalesce(cast(review_text as TEXT), '')\",)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__is_incremental",
+        "macro_arguments": "()",
+        "args": "()",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__generate_database_name",
+        "macro_arguments": "('custom_database_name', 'node')",
+        "args": "(None, ModelNode(database='airbnb', schema='dev', name='fct_reviews', resource_type=<NodeType.Model: 'model'>, package_name='dbtlearn', path='fct/fct_reviews.sql', original_file_path='models/fct/fct_reviews.sql', unique_id='model.dbtlearn.fct_reviews', fqn=['dbtlearn', 'fct', 'fct_reviews'], alias='fct_reviews', checksum=FileHash(name='sha256', checksum='e0f8db48602a99edb2c8dc276aa46e93acbdac2c5f141262ecf4d6431f5a7a8d'), config=NodeConfig(_extra={}, enabled=True, alias=None, schema=None, database=None, tags=[], meta={}, group=None, materialized='incremental', incremental_strategy='append', persist_docs={}, post_hook=[], pre_hook=[], quoting={}, column_types={}, full_refresh=None, unique_key=None, on_schema_change='fail', on_configuration_change=<OnConfigurationChangeOption.Apply: 'apply'>, grants={}, packages=[], docs=Docs(show=True, node_color=None), contract=ContractConfig(enforced=False)), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'materialized': 'incremental', 'on_schema_change': 'fail', 'incremental_strategy': 'append'}, created_at=1693898682.2077713, config_call_dict={'materialized': 'incremental', 'on_schema_change': 'fail', 'incremental_strategy': 'append'}, relation_name=None, raw_code=\"{{config(\\n    materialized = 'incremental',\\n    on_schema_change = 'fail',\\n    incremental_strategy='append',\\n)}}\\nWITH src_reviews AS (\\n        SELECT *\\n        FROM {{ref('src_reviews')}}\\n    )\\nSELECT \\n {{ dbt_utils.surrogate_key(['listing_id', 'review_date', 'reviewer_name', 'review_text']) }} as review_id,\\n*\\nFROM src_reviews WHERE review_text is not null\\n\\n{% if is_incremental() %}\\nAND review_date > (\\n    select max(review_date)\\n    from {{this}}\\n){% endif %}\", language=<ModelLanguage.sql: 'sql'>, refs=[RefArgs(name='src_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt_utils.surrogate_key', 'macro.dbt.is_incremental'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), access=<AccessType.Protected: 'protected'>, constraints=[], version=None, latest_version=None, deprecation_date=None, defer_relation=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__generate_database_name",
+        "macro_arguments": "('custom_database_name', 'node')",
+        "args": "(None, ModelNode(database='airbnb', schema='dev', name='fct_reviews', resource_type=<NodeType.Model: 'model'>, package_name='dbtlearn', path='fct/fct_reviews.sql', original_file_path='models/fct/fct_reviews.sql', unique_id='model.dbtlearn.fct_reviews', fqn=['dbtlearn', 'fct', 'fct_reviews'], alias='fct_reviews', checksum=FileHash(name='sha256', checksum='e0f8db48602a99edb2c8dc276aa46e93acbdac2c5f141262ecf4d6431f5a7a8d'), config=NodeConfig(_extra={}, enabled=True, alias=None, schema=None, database=None, tags=[], meta={}, group=None, materialized='incremental', incremental_strategy='append', persist_docs={}, post_hook=[], pre_hook=[], quoting={}, column_types={}, full_refresh=None, unique_key=None, on_schema_change='fail', on_configuration_change=<OnConfigurationChangeOption.Apply: 'apply'>, grants={}, packages=[], docs=Docs(show=True, node_color=None), contract=ContractConfig(enforced=False)), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'materialized': 'incremental', 'on_schema_change': 'fail', 'incremental_strategy': 'append'}, created_at=1693898682.2077713, config_call_dict={'materialized': 'incremental', 'on_schema_change': 'fail', 'incremental_strategy': 'append'}, relation_name=None, raw_code=\"{{config(\\n    materialized = 'incremental',\\n    on_schema_change = 'fail',\\n    incremental_strategy='append',\\n)}}\\nWITH src_reviews AS (\\n        SELECT *\\n        FROM {{ref('src_reviews')}}\\n    )\\nSELECT \\n {{ dbt_utils.surrogate_key(['listing_id', 'review_date', 'reviewer_name', 'review_text']) }} as review_id,\\n*\\nFROM src_reviews WHERE review_text is not null\\n\\n{% if is_incremental() %}\\nAND review_date > (\\n    select max(review_date)\\n    from {{this}}\\n){% endif %}\", language=<ModelLanguage.sql: 'sql'>, refs=[RefArgs(name='src_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt_utils.surrogate_key', 'macro.dbt.is_incremental'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), access=<AccessType.Protected: 'protected'>, constraints=[], version=None, latest_version=None, deprecation_date=None, defer_relation=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__generate_schema_name",
+        "macro_arguments": "('custom_schema_name', 'node')",
+        "args": "(None, ModelNode(database='airbnb', schema='dev', name='fct_reviews', resource_type=<NodeType.Model: 'model'>, package_name='dbtlearn', path='fct/fct_reviews.sql', original_file_path='models/fct/fct_reviews.sql', unique_id='model.dbtlearn.fct_reviews', fqn=['dbtlearn', 'fct', 'fct_reviews'], alias='fct_reviews', checksum=FileHash(name='sha256', checksum='e0f8db48602a99edb2c8dc276aa46e93acbdac2c5f141262ecf4d6431f5a7a8d'), config=NodeConfig(_extra={}, enabled=True, alias=None, schema=None, database=None, tags=[], meta={}, group=None, materialized='incremental', incremental_strategy='append', persist_docs={}, post_hook=[], pre_hook=[], quoting={}, column_types={}, full_refresh=None, unique_key=None, on_schema_change='fail', on_configuration_change=<OnConfigurationChangeOption.Apply: 'apply'>, grants={}, packages=[], docs=Docs(show=True, node_color=None), contract=ContractConfig(enforced=False)), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'materialized': 'incremental', 'on_schema_change': 'fail', 'incremental_strategy': 'append'}, created_at=1693898682.2077713, config_call_dict={'materialized': 'incremental', 'on_schema_change': 'fail', 'incremental_strategy': 'append'}, relation_name=None, raw_code=\"{{config(\\n    materialized = 'incremental',\\n    on_schema_change = 'fail',\\n    incremental_strategy='append',\\n)}}\\nWITH src_reviews AS (\\n        SELECT *\\n        FROM {{ref('src_reviews')}}\\n    )\\nSELECT \\n {{ dbt_utils.surrogate_key(['listing_id', 'review_date', 'reviewer_name', 'review_text']) }} as review_id,\\n*\\nFROM src_reviews WHERE review_text is not null\\n\\n{% if is_incremental() %}\\nAND review_date > (\\n    select max(review_date)\\n    from {{this}}\\n){% endif %}\", language=<ModelLanguage.sql: 'sql'>, refs=[RefArgs(name='src_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt_utils.surrogate_key', 'macro.dbt.is_incremental'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), access=<AccessType.Protected: 'protected'>, constraints=[], version=None, latest_version=None, deprecation_date=None, defer_relation=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__generate_schema_name",
+        "macro_arguments": "('custom_schema_name', 'node')",
+        "args": "(None, ModelNode(database='airbnb', schema='dev', name='fct_reviews', resource_type=<NodeType.Model: 'model'>, package_name='dbtlearn', path='fct/fct_reviews.sql', original_file_path='models/fct/fct_reviews.sql', unique_id='model.dbtlearn.fct_reviews', fqn=['dbtlearn', 'fct', 'fct_reviews'], alias='fct_reviews', checksum=FileHash(name='sha256', checksum='e0f8db48602a99edb2c8dc276aa46e93acbdac2c5f141262ecf4d6431f5a7a8d'), config=NodeConfig(_extra={}, enabled=True, alias=None, schema=None, database=None, tags=[], meta={}, group=None, materialized='incremental', incremental_strategy='append', persist_docs={}, post_hook=[], pre_hook=[], quoting={}, column_types={}, full_refresh=None, unique_key=None, on_schema_change='fail', on_configuration_change=<OnConfigurationChangeOption.Apply: 'apply'>, grants={}, packages=[], docs=Docs(show=True, node_color=None), contract=ContractConfig(enforced=False)), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'materialized': 'incremental', 'on_schema_change': 'fail', 'incremental_strategy': 'append'}, created_at=1693898682.2077713, config_call_dict={'materialized': 'incremental', 'on_schema_change': 'fail', 'incremental_strategy': 'append'}, relation_name=None, raw_code=\"{{config(\\n    materialized = 'incremental',\\n    on_schema_change = 'fail',\\n    incremental_strategy='append',\\n)}}\\nWITH src_reviews AS (\\n        SELECT *\\n        FROM {{ref('src_reviews')}}\\n    )\\nSELECT \\n {{ dbt_utils.surrogate_key(['listing_id', 'review_date', 'reviewer_name', 'review_text']) }} as review_id,\\n*\\nFROM src_reviews WHERE review_text is not null\\n\\n{% if is_incremental() %}\\nAND review_date > (\\n    select max(review_date)\\n    from {{this}}\\n){% endif %}\", language=<ModelLanguage.sql: 'sql'>, refs=[RefArgs(name='src_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt_utils.surrogate_key', 'macro.dbt.is_incremental'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), access=<AccessType.Protected: 'protected'>, constraints=[], version=None, latest_version=None, deprecation_date=None, defer_relation=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__generate_alias_name",
+        "macro_arguments": "('custom_alias_name', 'node')",
+        "args": "(None, ModelNode(database='airbnb', schema='dev', name='fct_reviews', resource_type=<NodeType.Model: 'model'>, package_name='dbtlearn', path='fct/fct_reviews.sql', original_file_path='models/fct/fct_reviews.sql', unique_id='model.dbtlearn.fct_reviews', fqn=['dbtlearn', 'fct', 'fct_reviews'], alias='fct_reviews', checksum=FileHash(name='sha256', checksum='e0f8db48602a99edb2c8dc276aa46e93acbdac2c5f141262ecf4d6431f5a7a8d'), config=NodeConfig(_extra={}, enabled=True, alias=None, schema=None, database=None, tags=[], meta={}, group=None, materialized='incremental', incremental_strategy='append', persist_docs={}, post_hook=[], pre_hook=[], quoting={}, column_types={}, full_refresh=None, unique_key=None, on_schema_change='fail', on_configuration_change=<OnConfigurationChangeOption.Apply: 'apply'>, grants={}, packages=[], docs=Docs(show=True, node_color=None), contract=ContractConfig(enforced=False)), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'materialized': 'incremental', 'on_schema_change': 'fail', 'incremental_strategy': 'append'}, created_at=1693898682.2077713, config_call_dict={'materialized': 'incremental', 'on_schema_change': 'fail', 'incremental_strategy': 'append'}, relation_name=None, raw_code=\"{{config(\\n    materialized = 'incremental',\\n    on_schema_change = 'fail',\\n    incremental_strategy='append',\\n)}}\\nWITH src_reviews AS (\\n        SELECT *\\n        FROM {{ref('src_reviews')}}\\n    )\\nSELECT \\n {{ dbt_utils.surrogate_key(['listing_id', 'review_date', 'reviewer_name', 'review_text']) }} as review_id,\\n*\\nFROM src_reviews WHERE review_text is not null\\n\\n{% if is_incremental() %}\\nAND review_date > (\\n    select max(review_date)\\n    from {{this}}\\n){% endif %}\", language=<ModelLanguage.sql: 'sql'>, refs=[RefArgs(name='src_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt_utils.surrogate_key', 'macro.dbt.is_incremental'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), access=<AccessType.Protected: 'protected'>, constraints=[], version=None, latest_version=None, deprecation_date=None, defer_relation=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__generate_alias_name",
+        "macro_arguments": "('custom_alias_name', 'node')",
+        "args": "(None, ModelNode(database='airbnb', schema='dev', name='fct_reviews', resource_type=<NodeType.Model: 'model'>, package_name='dbtlearn', path='fct/fct_reviews.sql', original_file_path='models/fct/fct_reviews.sql', unique_id='model.dbtlearn.fct_reviews', fqn=['dbtlearn', 'fct', 'fct_reviews'], alias='fct_reviews', checksum=FileHash(name='sha256', checksum='e0f8db48602a99edb2c8dc276aa46e93acbdac2c5f141262ecf4d6431f5a7a8d'), config=NodeConfig(_extra={}, enabled=True, alias=None, schema=None, database=None, tags=[], meta={}, group=None, materialized='incremental', incremental_strategy='append', persist_docs={}, post_hook=[], pre_hook=[], quoting={}, column_types={}, full_refresh=None, unique_key=None, on_schema_change='fail', on_configuration_change=<OnConfigurationChangeOption.Apply: 'apply'>, grants={}, packages=[], docs=Docs(show=True, node_color=None), contract=ContractConfig(enforced=False)), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'materialized': 'incremental', 'on_schema_change': 'fail', 'incremental_strategy': 'append'}, created_at=1693898682.2077713, config_call_dict={'materialized': 'incremental', 'on_schema_change': 'fail', 'incremental_strategy': 'append'}, relation_name=None, raw_code=\"{{config(\\n    materialized = 'incremental',\\n    on_schema_change = 'fail',\\n    incremental_strategy='append',\\n)}}\\nWITH src_reviews AS (\\n        SELECT *\\n        FROM {{ref('src_reviews')}}\\n    )\\nSELECT \\n {{ dbt_utils.surrogate_key(['listing_id', 'review_date', 'reviewer_name', 'review_text']) }} as review_id,\\n*\\nFROM src_reviews WHERE review_text is not null\\n\\n{% if is_incremental() %}\\nAND review_date > (\\n    select max(review_date)\\n    from {{this}}\\n){% endif %}\", language=<ModelLanguage.sql: 'sql'>, refs=[RefArgs(name='src_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt_utils.surrogate_key', 'macro.dbt.is_incremental'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), access=<AccessType.Protected: 'protected'>, constraints=[], version=None, latest_version=None, deprecation_date=None, defer_relation=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__get_where_subquery",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__get_where_subquery",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__test_relationships",
+        "macro_arguments": "('model', 'column_name', 'to', 'field')",
+        "args": "()",
+        "kwargs": "{'to': <PostgresRelation \"airbnb\".\"dev\".\"relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_\">, 'field': 'listing_id', 'column_name': 'listing_id', 'model': <PostgresRelation \"airbnb\".\"dev\".\"relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_\">}"
+    },
+    {
+        "macro_name": "dbt_macro__default__test_relationships",
+        "macro_arguments": "('model', 'column_name', 'to', 'field')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_\">, 'listing_id', <PostgresRelation \"airbnb\".\"dev\".\"relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_\">, 'listing_id')",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__generate_database_name",
+        "macro_arguments": "('custom_database_name', 'node')",
+        "args": "(None, GenericTestNode(test_metadata=TestMetadata(name='relationships', kwargs={'to': \"ref('dim_listings_cleansed')\", 'field': 'listing_id', 'column_name': 'listing_id', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev', name='relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_.7dd9ef05fe', fqn=['dbtlearn', 'relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_'], alias='relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias='relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d', schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'alias': 'relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d'}, created_at=1693898682.2506397, config_call_dict={'alias': 'relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d'}, relation_name=None, raw_code='{{ test_relationships(**_dbt_generic_test_kwargs) }}{{ config(alias=\"relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d\") }}', language='sql', refs=[RefArgs(name='dim_listings_cleansed', package=None, version=None), RefArgs(name='fct_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_relationships', 'macro.dbt.get_where_subquery'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='listing_id', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__generate_database_name",
+        "macro_arguments": "('custom_database_name', 'node')",
+        "args": "(None, GenericTestNode(test_metadata=TestMetadata(name='relationships', kwargs={'to': \"ref('dim_listings_cleansed')\", 'field': 'listing_id', 'column_name': 'listing_id', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev', name='relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_.7dd9ef05fe', fqn=['dbtlearn', 'relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_'], alias='relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias='relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d', schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'alias': 'relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d'}, created_at=1693898682.2506397, config_call_dict={'alias': 'relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d'}, relation_name=None, raw_code='{{ test_relationships(**_dbt_generic_test_kwargs) }}{{ config(alias=\"relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d\") }}', language='sql', refs=[RefArgs(name='dim_listings_cleansed', package=None, version=None), RefArgs(name='fct_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_relationships', 'macro.dbt.get_where_subquery'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='listing_id', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__generate_schema_name",
+        "macro_arguments": "('custom_schema_name', 'node')",
+        "args": "('dbt_test__audit', GenericTestNode(test_metadata=TestMetadata(name='relationships', kwargs={'to': \"ref('dim_listings_cleansed')\", 'field': 'listing_id', 'column_name': 'listing_id', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev', name='relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_.7dd9ef05fe', fqn=['dbtlearn', 'relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_'], alias='relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias='relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d', schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'alias': 'relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d'}, created_at=1693898682.2506397, config_call_dict={'alias': 'relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d'}, relation_name=None, raw_code='{{ test_relationships(**_dbt_generic_test_kwargs) }}{{ config(alias=\"relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d\") }}', language='sql', refs=[RefArgs(name='dim_listings_cleansed', package=None, version=None), RefArgs(name='fct_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_relationships', 'macro.dbt.get_where_subquery'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='listing_id', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__generate_schema_name",
+        "macro_arguments": "('custom_schema_name', 'node')",
+        "args": "('dbt_test__audit', GenericTestNode(test_metadata=TestMetadata(name='relationships', kwargs={'to': \"ref('dim_listings_cleansed')\", 'field': 'listing_id', 'column_name': 'listing_id', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev', name='relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_.7dd9ef05fe', fqn=['dbtlearn', 'relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_'], alias='relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias='relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d', schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'alias': 'relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d'}, created_at=1693898682.2506397, config_call_dict={'alias': 'relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d'}, relation_name=None, raw_code='{{ test_relationships(**_dbt_generic_test_kwargs) }}{{ config(alias=\"relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d\") }}', language='sql', refs=[RefArgs(name='dim_listings_cleansed', package=None, version=None), RefArgs(name='fct_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_relationships', 'macro.dbt.get_where_subquery'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='listing_id', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__generate_alias_name",
+        "macro_arguments": "('custom_alias_name', 'node')",
+        "args": "('relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d', GenericTestNode(test_metadata=TestMetadata(name='relationships', kwargs={'to': \"ref('dim_listings_cleansed')\", 'field': 'listing_id', 'column_name': 'listing_id', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev_dbt_test__audit', name='relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_.7dd9ef05fe', fqn=['dbtlearn', 'relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_'], alias='relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias='relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d', schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'alias': 'relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d'}, created_at=1693898682.2506397, config_call_dict={'alias': 'relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d'}, relation_name=None, raw_code='{{ test_relationships(**_dbt_generic_test_kwargs) }}{{ config(alias=\"relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d\") }}', language='sql', refs=[RefArgs(name='dim_listings_cleansed', package=None, version=None), RefArgs(name='fct_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_relationships', 'macro.dbt.get_where_subquery'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='listing_id', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__generate_alias_name",
+        "macro_arguments": "('custom_alias_name', 'node')",
+        "args": "('relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d', GenericTestNode(test_metadata=TestMetadata(name='relationships', kwargs={'to': \"ref('dim_listings_cleansed')\", 'field': 'listing_id', 'column_name': 'listing_id', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev_dbt_test__audit', name='relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_.7dd9ef05fe', fqn=['dbtlearn', 'relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_'], alias='relationships_fct_reviews_listing_id__listing_id__ref_dim_listings_cleansed_', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias='relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d', schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'alias': 'relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d'}, created_at=1693898682.2506397, config_call_dict={'alias': 'relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d'}, relation_name=None, raw_code='{{ test_relationships(**_dbt_generic_test_kwargs) }}{{ config(alias=\"relationships_fct_reviews_2f397514d7615e5ae30d8fce9f0ea58d\") }}', language='sql', refs=[RefArgs(name='dim_listings_cleansed', package=None, version=None), RefArgs(name='fct_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_relationships', 'macro.dbt.get_where_subquery'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='listing_id', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__generate_database_name",
+        "macro_arguments": "('custom_database_name', 'node')",
+        "args": "(None, GenericTestNode(test_metadata=TestMetadata(name='not_null', kwargs={'column_name': 'reviewer_name', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev', name='not_null_fct_reviews_reviewer_name', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='not_null_fct_reviews_reviewer_name.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.not_null_fct_reviews_reviewer_name.8204e43c88', fqn=['dbtlearn', 'not_null_fct_reviews_reviewer_name'], alias='not_null_fct_reviews_reviewer_name', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias=None, schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={}, created_at=1693898682.2607334, config_call_dict={}, relation_name=None, raw_code='{{ test_not_null(**_dbt_generic_test_kwargs) }}', language='sql', refs=[], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_not_null'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='reviewer_name', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__generate_database_name",
+        "macro_arguments": "('custom_database_name', 'node')",
+        "args": "(None, GenericTestNode(test_metadata=TestMetadata(name='not_null', kwargs={'column_name': 'reviewer_name', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev', name='not_null_fct_reviews_reviewer_name', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='not_null_fct_reviews_reviewer_name.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.not_null_fct_reviews_reviewer_name.8204e43c88', fqn=['dbtlearn', 'not_null_fct_reviews_reviewer_name'], alias='not_null_fct_reviews_reviewer_name', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias=None, schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={}, created_at=1693898682.2607334, config_call_dict={}, relation_name=None, raw_code='{{ test_not_null(**_dbt_generic_test_kwargs) }}', language='sql', refs=[], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_not_null'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='reviewer_name', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__generate_schema_name",
+        "macro_arguments": "('custom_schema_name', 'node')",
+        "args": "('dbt_test__audit', GenericTestNode(test_metadata=TestMetadata(name='not_null', kwargs={'column_name': 'reviewer_name', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev', name='not_null_fct_reviews_reviewer_name', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='not_null_fct_reviews_reviewer_name.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.not_null_fct_reviews_reviewer_name.8204e43c88', fqn=['dbtlearn', 'not_null_fct_reviews_reviewer_name'], alias='not_null_fct_reviews_reviewer_name', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias=None, schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={}, created_at=1693898682.2607334, config_call_dict={}, relation_name=None, raw_code='{{ test_not_null(**_dbt_generic_test_kwargs) }}', language='sql', refs=[], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_not_null'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='reviewer_name', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__generate_schema_name",
+        "macro_arguments": "('custom_schema_name', 'node')",
+        "args": "('dbt_test__audit', GenericTestNode(test_metadata=TestMetadata(name='not_null', kwargs={'column_name': 'reviewer_name', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev', name='not_null_fct_reviews_reviewer_name', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='not_null_fct_reviews_reviewer_name.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.not_null_fct_reviews_reviewer_name.8204e43c88', fqn=['dbtlearn', 'not_null_fct_reviews_reviewer_name'], alias='not_null_fct_reviews_reviewer_name', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias=None, schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={}, created_at=1693898682.2607334, config_call_dict={}, relation_name=None, raw_code='{{ test_not_null(**_dbt_generic_test_kwargs) }}', language='sql', refs=[], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_not_null'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='reviewer_name', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__generate_alias_name",
+        "macro_arguments": "('custom_alias_name', 'node')",
+        "args": "(None, GenericTestNode(test_metadata=TestMetadata(name='not_null', kwargs={'column_name': 'reviewer_name', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev_dbt_test__audit', name='not_null_fct_reviews_reviewer_name', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='not_null_fct_reviews_reviewer_name.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.not_null_fct_reviews_reviewer_name.8204e43c88', fqn=['dbtlearn', 'not_null_fct_reviews_reviewer_name'], alias='not_null_fct_reviews_reviewer_name', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias=None, schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={}, created_at=1693898682.2607334, config_call_dict={}, relation_name=None, raw_code='{{ test_not_null(**_dbt_generic_test_kwargs) }}', language='sql', refs=[], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_not_null'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='reviewer_name', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__generate_alias_name",
+        "macro_arguments": "('custom_alias_name', 'node')",
+        "args": "(None, GenericTestNode(test_metadata=TestMetadata(name='not_null', kwargs={'column_name': 'reviewer_name', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev_dbt_test__audit', name='not_null_fct_reviews_reviewer_name', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='not_null_fct_reviews_reviewer_name.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.not_null_fct_reviews_reviewer_name.8204e43c88', fqn=['dbtlearn', 'not_null_fct_reviews_reviewer_name'], alias='not_null_fct_reviews_reviewer_name', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias=None, schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={}, created_at=1693898682.2607334, config_call_dict={}, relation_name=None, raw_code='{{ test_not_null(**_dbt_generic_test_kwargs) }}', language='sql', refs=[], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_not_null'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='reviewer_name', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__get_where_subquery",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"accepted_values_fct_reviews_review_sentiment__positive__neutral__negative\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__get_where_subquery",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"accepted_values_fct_reviews_review_sentiment__positive__neutral__negative\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__test_accepted_values",
+        "macro_arguments": "('model', 'column_name', 'values', 'quote')",
+        "args": "()",
+        "kwargs": "{'values': ['positive', 'neutral', 'negative'], 'column_name': 'review_sentiment', 'model': <PostgresRelation \"airbnb\".\"dev\".\"accepted_values_fct_reviews_review_sentiment__positive__neutral__negative\">}"
+    },
+    {
+        "macro_name": "dbt_macro__default__test_accepted_values",
+        "macro_arguments": "('model', 'column_name', 'values', 'quote')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"accepted_values_fct_reviews_review_sentiment__positive__neutral__negative\">, 'review_sentiment', ['positive', 'neutral', 'negative'], True)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__generate_database_name",
+        "macro_arguments": "('custom_database_name', 'node')",
+        "args": "(None, GenericTestNode(test_metadata=TestMetadata(name='accepted_values', kwargs={'values': ['positive', 'neutral', 'negative'], 'column_name': 'review_sentiment', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev', name='accepted_values_fct_reviews_review_sentiment__positive__neutral__negative', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.accepted_values_fct_reviews_review_sentiment__positive__neutral__negative.7309aafcef', fqn=['dbtlearn', 'accepted_values_fct_reviews_review_sentiment__positive__neutral__negative'], alias='accepted_values_fct_reviews_review_sentiment__positive__neutral__negative', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias='accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78', schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'alias': 'accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78'}, created_at=1693898682.2638948, config_call_dict={'alias': 'accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78'}, relation_name=None, raw_code='{{ test_accepted_values(**_dbt_generic_test_kwargs) }}{{ config(alias=\"accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78\") }}', language='sql', refs=[RefArgs(name='fct_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_accepted_values', 'macro.dbt.get_where_subquery'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='review_sentiment', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__generate_database_name",
+        "macro_arguments": "('custom_database_name', 'node')",
+        "args": "(None, GenericTestNode(test_metadata=TestMetadata(name='accepted_values', kwargs={'values': ['positive', 'neutral', 'negative'], 'column_name': 'review_sentiment', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev', name='accepted_values_fct_reviews_review_sentiment__positive__neutral__negative', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.accepted_values_fct_reviews_review_sentiment__positive__neutral__negative.7309aafcef', fqn=['dbtlearn', 'accepted_values_fct_reviews_review_sentiment__positive__neutral__negative'], alias='accepted_values_fct_reviews_review_sentiment__positive__neutral__negative', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias='accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78', schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'alias': 'accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78'}, created_at=1693898682.2638948, config_call_dict={'alias': 'accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78'}, relation_name=None, raw_code='{{ test_accepted_values(**_dbt_generic_test_kwargs) }}{{ config(alias=\"accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78\") }}', language='sql', refs=[RefArgs(name='fct_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_accepted_values', 'macro.dbt.get_where_subquery'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='review_sentiment', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__generate_schema_name",
+        "macro_arguments": "('custom_schema_name', 'node')",
+        "args": "('dbt_test__audit', GenericTestNode(test_metadata=TestMetadata(name='accepted_values', kwargs={'values': ['positive', 'neutral', 'negative'], 'column_name': 'review_sentiment', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev', name='accepted_values_fct_reviews_review_sentiment__positive__neutral__negative', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.accepted_values_fct_reviews_review_sentiment__positive__neutral__negative.7309aafcef', fqn=['dbtlearn', 'accepted_values_fct_reviews_review_sentiment__positive__neutral__negative'], alias='accepted_values_fct_reviews_review_sentiment__positive__neutral__negative', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias='accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78', schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'alias': 'accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78'}, created_at=1693898682.2638948, config_call_dict={'alias': 'accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78'}, relation_name=None, raw_code='{{ test_accepted_values(**_dbt_generic_test_kwargs) }}{{ config(alias=\"accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78\") }}', language='sql', refs=[RefArgs(name='fct_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_accepted_values', 'macro.dbt.get_where_subquery'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='review_sentiment', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__generate_schema_name",
+        "macro_arguments": "('custom_schema_name', 'node')",
+        "args": "('dbt_test__audit', GenericTestNode(test_metadata=TestMetadata(name='accepted_values', kwargs={'values': ['positive', 'neutral', 'negative'], 'column_name': 'review_sentiment', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev', name='accepted_values_fct_reviews_review_sentiment__positive__neutral__negative', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.accepted_values_fct_reviews_review_sentiment__positive__neutral__negative.7309aafcef', fqn=['dbtlearn', 'accepted_values_fct_reviews_review_sentiment__positive__neutral__negative'], alias='accepted_values_fct_reviews_review_sentiment__positive__neutral__negative', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias='accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78', schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'alias': 'accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78'}, created_at=1693898682.2638948, config_call_dict={'alias': 'accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78'}, relation_name=None, raw_code='{{ test_accepted_values(**_dbt_generic_test_kwargs) }}{{ config(alias=\"accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78\") }}', language='sql', refs=[RefArgs(name='fct_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_accepted_values', 'macro.dbt.get_where_subquery'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='review_sentiment', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__generate_alias_name",
+        "macro_arguments": "('custom_alias_name', 'node')",
+        "args": "('accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78', GenericTestNode(test_metadata=TestMetadata(name='accepted_values', kwargs={'values': ['positive', 'neutral', 'negative'], 'column_name': 'review_sentiment', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev_dbt_test__audit', name='accepted_values_fct_reviews_review_sentiment__positive__neutral__negative', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.accepted_values_fct_reviews_review_sentiment__positive__neutral__negative.7309aafcef', fqn=['dbtlearn', 'accepted_values_fct_reviews_review_sentiment__positive__neutral__negative'], alias='accepted_values_fct_reviews_review_sentiment__positive__neutral__negative', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias='accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78', schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'alias': 'accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78'}, created_at=1693898682.2638948, config_call_dict={'alias': 'accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78'}, relation_name=None, raw_code='{{ test_accepted_values(**_dbt_generic_test_kwargs) }}{{ config(alias=\"accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78\") }}', language='sql', refs=[RefArgs(name='fct_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_accepted_values', 'macro.dbt.get_where_subquery'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='review_sentiment', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__generate_alias_name",
+        "macro_arguments": "('custom_alias_name', 'node')",
+        "args": "('accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78', GenericTestNode(test_metadata=TestMetadata(name='accepted_values', kwargs={'values': ['positive', 'neutral', 'negative'], 'column_name': 'review_sentiment', 'model': \"{{ get_where_subquery(ref('fct_reviews')) }}\"}, namespace=None), database='airbnb', schema='dev_dbt_test__audit', name='accepted_values_fct_reviews_review_sentiment__positive__neutral__negative', resource_type=<NodeType.Test: 'test'>, package_name='dbtlearn', path='accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78.sql', original_file_path='models/schema.yml', unique_id='test.dbtlearn.accepted_values_fct_reviews_review_sentiment__positive__neutral__negative.7309aafcef', fqn=['dbtlearn', 'accepted_values_fct_reviews_review_sentiment__positive__neutral__negative'], alias='accepted_values_fct_reviews_review_sentiment__positive__neutral__negative', checksum=FileHash(name='none', checksum=''), config=TestConfig(_extra={}, enabled=True, alias='accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78', schema='dbt_test__audit', database=None, tags=[], meta={}, group=None, materialized='test', severity='ERROR', store_failures=None, where=None, limit=None, fail_calc='count(*)', warn_if='!= 0', error_if='!= 0'), _event_status={}, tags=[], description='', columns={}, meta={}, group=None, docs=Docs(show=True, node_color=None), patch_path=None, build_path=None, deferred=False, unrendered_config={'alias': 'accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78'}, created_at=1693898682.2638948, config_call_dict={'alias': 'accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78'}, relation_name=None, raw_code='{{ test_accepted_values(**_dbt_generic_test_kwargs) }}{{ config(alias=\"accepted_values_fct_reviews_beb36f129a533890a78cc01ac370ef78\") }}', language='sql', refs=[RefArgs(name='fct_reviews', package=None, version=None)], sources=[], metrics=[], depends_on=DependsOn(macros=['macro.dbt.test_accepted_values', 'macro.dbt.get_where_subquery'], nodes=[]), compiled_path=None, compiled=False, compiled_code=None, extra_ctes_injected=False, extra_ctes=[], _pre_injected_sql=None, contract=Contract(enforced=False, checksum=None), column_name='review_sentiment', file_key_name='models.fct_reviews', attached_node=None))",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__list_schemas",
+        "macro_arguments": "('database',)",
+        "args": "()",
+        "kwargs": "{'database': '\"airbnb\"'}"
+    },
+    {
+        "macro_name": "dbt_macro__postgres__list_schemas",
+        "macro_arguments": "('database',)",
+        "args": "('\"airbnb\"',)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__statement",
+        "macro_arguments": "('name', 'fetch_result', 'auto_begin', 'language')",
+        "args": "('list_schemas',)",
+        "kwargs": "{'fetch_result': True, 'auto_begin': False, 'caller': <Macro anonymous>}"
+    },
+    {
+        "macro_name": "dbt_macro__list_relations_without_caching",
+        "macro_arguments": "('schema_relation',)",
+        "args": "()",
+        "kwargs": "{'schema_relation': <PostgresRelation \"airbnb\".\"dev\">}"
+    },
+    {
+        "macro_name": "dbt_macro__postgres__list_relations_without_caching",
+        "macro_arguments": "('schema_relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__statement",
+        "macro_arguments": "('name', 'fetch_result', 'auto_begin', 'language')",
+        "args": "('list_relations_without_caching',)",
+        "kwargs": "{'fetch_result': True, 'caller': <Macro anonymous>}"
+    },
+    {
+        "macro_name": "dbt_macro__postgres__get_relations",
+        "macro_arguments": "()",
+        "args": "()",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__statement",
+        "macro_arguments": "('name', 'fetch_result', 'auto_begin', 'language')",
+        "args": "('relations',)",
+        "kwargs": "{'fetch_result': True, 'caller': <Macro anonymous>}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('model.dbtlearn.src_hosts', <dbt.adapters.base.query_headers.NodeWrapper object at 0x7f343794d050>)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__materialization_materialized_view_default",
+        "macro_arguments": "('supported_languages',)",
+        "args": "()",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__load_cached_relation",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__make_intermediate_relation",
+        "macro_arguments": "('base_relation', 'suffix')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__postgres__make_intermediate_relation",
+        "macro_arguments": "('base_relation', 'suffix')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, '__dbt_tmp')",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__postgres__make_relation_with_suffix",
+        "macro_arguments": "('base_relation', 'suffix', 'dstring')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, '__dbt_tmp')",
+        "kwargs": "{'dstring': False}"
+    },
+    {
+        "macro_name": "dbt_macro__make_backup_relation",
+        "macro_arguments": "('base_relation', 'backup_relation_type', 'suffix')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, 'materialized_view')",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__postgres__make_backup_relation",
+        "macro_arguments": "('base_relation', 'backup_relation_type', 'suffix')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, 'materialized_view', '__dbt_backup')",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__postgres__make_relation_with_suffix",
+        "macro_arguments": "('base_relation', 'suffix', 'dstring')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, '__dbt_backup')",
+        "kwargs": "{'dstring': False}"
+    },
+    {
+        "macro_name": "dbt_macro__materialized_view_setup",
+        "macro_arguments": "('backup_relation', 'intermediate_relation', 'pre_hooks')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_backup\">, <PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_tmp\">, [])",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__load_cached_relation",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_backup\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__load_cached_relation",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_tmp\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__drop_relation_if_exists",
+        "macro_arguments": "('relation',)",
+        "args": "(None,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__drop_relation_if_exists",
+        "macro_arguments": "('relation',)",
+        "args": "(None,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__run_hooks",
+        "macro_arguments": "('hooks', 'inside_transaction')",
+        "args": "([],)",
+        "kwargs": "{'inside_transaction': False}"
+    },
+    {
+        "macro_name": "dbt_macro__materialized_view_get_build_sql",
+        "macro_arguments": "('existing_relation', 'target_relation', 'backup_relation', 'intermediate_relation')",
+        "args": "(None, <PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, <PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_backup\">, <PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_tmp\">)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__should_full_refresh",
+        "macro_arguments": "()",
+        "args": "()",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__get_create_materialized_view_as_sql",
+        "macro_arguments": "('relation', 'sql')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, '\\n\\nWITH raw_hosts AS (\\n\\n    SELECT\\n        *\\n    FROM\\n        \"airbnb\".\"raw\".\"raw_hosts\"\\n)\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM\\n    raw_hosts')",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__postgres__get_create_materialized_view_as_sql",
+        "macro_arguments": "('relation', 'sql')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, '\\n\\nWITH raw_hosts AS (\\n\\n    SELECT\\n        *\\n    FROM\\n        \"airbnb\".\"raw\".\"raw_hosts\"\\n)\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM\\n    raw_hosts')",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__get_create_index_sql",
+        "macro_arguments": "('relation', 'index_dict')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, {'columns': ['host_name'], 'type': 'hash'})",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__postgres__get_create_index_sql",
+        "macro_arguments": "('relation', 'index_dict')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, {'columns': ['host_name'], 'type': 'hash'})",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__materialized_view_execute_build_sql",
+        "macro_arguments": "('build_sql', 'existing_relation', 'target_relation', 'post_hooks')",
+        "args": "('\\n    create materialized view if not exists \"airbnb\".\"dev\".\"src_hosts\" as \\n\\nWITH raw_hosts AS (\\n\\n    SELECT\\n        *\\n    FROM\\n        \"airbnb\".\"raw\".\"raw_hosts\"\\n)\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM\\n    raw_hosts;\\n\\n    create  index if not exists\\n  \"69f8a838b774d0eac72f0fe7e0c509f5\"\\n  on \"airbnb\".\"dev\".\"src_hosts\" using hash\\n  (host_name);', None, <PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, [])",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__run_hooks",
+        "macro_arguments": "('hooks', 'inside_transaction')",
+        "args": "([],)",
+        "kwargs": "{'inside_transaction': True}"
+    },
+    {
+        "macro_name": "dbt_macro__statement",
+        "macro_arguments": "('name', 'fetch_result', 'auto_begin', 'language')",
+        "args": "()",
+        "kwargs": "{'name': 'main', 'caller': <Macro anonymous>}"
+    },
+    {
+        "macro_name": "dbt_macro__should_revoke",
+        "macro_arguments": "('existing_relation', 'full_refresh_mode')",
+        "args": "(None,)",
+        "kwargs": "{'full_refresh_mode': True}"
+    },
+    {
+        "macro_name": "dbt_macro__apply_grants",
+        "macro_arguments": "('relation', 'grant_config', 'should_revoke')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, {})",
+        "kwargs": "{'should_revoke': False}"
+    },
+    {
+        "macro_name": "dbt_macro__default__apply_grants",
+        "macro_arguments": "('relation', 'grant_config', 'should_revoke')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, {}, False)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__persist_docs",
+        "macro_arguments": "('relation', 'model', 'for_relation', 'for_columns')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, {'database': 'airbnb', 'schema': 'dev', 'name': 'src_hosts', 'resource_type': 'model', 'package_name': 'dbtlearn', 'path': 'src/src_hosts.sql', 'original_file_path': 'models/src/src_hosts.sql', 'unique_id': 'model.dbtlearn.src_hosts', 'fqn': ['dbtlearn', 'src', 'src_hosts'], 'alias': 'src_hosts', 'checksum': {'name': 'sha256', 'checksum': '64d2711a57337e9b99847d38727753487bc01c281bfac57a55a50c465abf4132'}, 'config': {'enabled': True, 'tags': [], 'meta': {}, 'materialized': 'materialized_view', 'persist_docs': {}, 'quoting': {}, 'column_types': {}, 'on_schema_change': 'ignore', 'on_configuration_change': 'apply', 'grants': {}, 'packages': [], 'docs': {'show': True}, 'contract': {'enforced': False}, 'unlogged': True, 'indexes': [{'columns': ['host_name'], 'type': 'hash'}], 'post-hook': [], 'pre-hook': []}, 'tags': [], 'description': '', 'columns': {}, 'meta': {}, 'docs': {'show': True}, 'deferred': False, 'unrendered_config': {'materialized': 'materialized_view', 'unlogged': True, 'indexes': [{'columns': ['host_name'], 'type': 'hash'}]}, 'created_at': 1693828890.819881, 'config_call_dict': {'materialized': 'materialized_view', 'unlogged': True, 'indexes': [{'columns': ['host_name'], 'type': 'hash'}]}, 'relation_name': '\"airbnb\".\"dev\".\"src_hosts\"', 'raw_code': \"{{ config(\\n    materialized = 'materialized_view',\\n    unlogged = True,\\n    indexes = [ {'columns': ['host_name'],\\n    'type': 'hash' },]\\n) }}\\n\\nWITH raw_hosts AS (\\n\\n    SELECT\\n        *\\n    FROM\\n        {{ source(\\n            'airbnb',\\n            'hosts'\\n        ) }}\\n)\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM\\n    raw_hosts\", 'language': 'sql', 'refs': [], 'sources': [['airbnb', 'hosts']], 'metrics': [], 'depends_on': {'macros': [], 'nodes': ['source.dbtlearn.airbnb.hosts']}, 'compiled_path': 'target/compiled/dbtlearn/models/src/src_hosts.sql', 'compiled': True, 'compiled_code': '\\n\\nWITH raw_hosts AS (\\n\\n    SELECT\\n        *\\n    FROM\\n        \"airbnb\".\"raw\".\"raw_hosts\"\\n)\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM\\n    raw_hosts', 'extra_ctes_injected': True, 'extra_ctes': [], 'contract': {'enforced': False}, 'access': 'protected', 'constraints': [], 'compiled_sql': '\\n\\nWITH raw_hosts AS (\\n\\n    SELECT\\n        *\\n    FROM\\n        \"airbnb\".\"raw\".\"raw_hosts\"\\n)\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM\\n    raw_hosts'})",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__persist_docs",
+        "macro_arguments": "('relation', 'model', 'for_relation', 'for_columns')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts\">, {'database': 'airbnb', 'schema': 'dev', 'name': 'src_hosts', 'resource_type': 'model', 'package_name': 'dbtlearn', 'path': 'src/src_hosts.sql', 'original_file_path': 'models/src/src_hosts.sql', 'unique_id': 'model.dbtlearn.src_hosts', 'fqn': ['dbtlearn', 'src', 'src_hosts'], 'alias': 'src_hosts', 'checksum': {'name': 'sha256', 'checksum': '64d2711a57337e9b99847d38727753487bc01c281bfac57a55a50c465abf4132'}, 'config': {'enabled': True, 'tags': [], 'meta': {}, 'materialized': 'materialized_view', 'persist_docs': {}, 'quoting': {}, 'column_types': {}, 'on_schema_change': 'ignore', 'on_configuration_change': 'apply', 'grants': {}, 'packages': [], 'docs': {'show': True}, 'contract': {'enforced': False}, 'unlogged': True, 'indexes': [{'columns': ['host_name'], 'type': 'hash'}], 'post-hook': [], 'pre-hook': []}, 'tags': [], 'description': '', 'columns': {}, 'meta': {}, 'docs': {'show': True}, 'deferred': False, 'unrendered_config': {'materialized': 'materialized_view', 'unlogged': True, 'indexes': [{'columns': ['host_name'], 'type': 'hash'}]}, 'created_at': 1693828890.819881, 'config_call_dict': {'materialized': 'materialized_view', 'unlogged': True, 'indexes': [{'columns': ['host_name'], 'type': 'hash'}]}, 'relation_name': '\"airbnb\".\"dev\".\"src_hosts\"', 'raw_code': \"{{ config(\\n    materialized = 'materialized_view',\\n    unlogged = True,\\n    indexes = [ {'columns': ['host_name'],\\n    'type': 'hash' },]\\n) }}\\n\\nWITH raw_hosts AS (\\n\\n    SELECT\\n        *\\n    FROM\\n        {{ source(\\n            'airbnb',\\n            'hosts'\\n        ) }}\\n)\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM\\n    raw_hosts\", 'language': 'sql', 'refs': [], 'sources': [['airbnb', 'hosts']], 'metrics': [], 'depends_on': {'macros': [], 'nodes': ['source.dbtlearn.airbnb.hosts']}, 'compiled_path': 'target/compiled/dbtlearn/models/src/src_hosts.sql', 'compiled': True, 'compiled_code': '\\n\\nWITH raw_hosts AS (\\n\\n    SELECT\\n        *\\n    FROM\\n        \"airbnb\".\"raw\".\"raw_hosts\"\\n)\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM\\n    raw_hosts', 'extra_ctes_injected': True, 'extra_ctes': [], 'contract': {'enforced': False}, 'access': 'protected', 'constraints': [], 'compiled_sql': '\\n\\nWITH raw_hosts AS (\\n\\n    SELECT\\n        *\\n    FROM\\n        \"airbnb\".\"raw\".\"raw_hosts\"\\n)\\nSELECT\\n    id AS host_id,\\n    NAME AS host_name,\\n    is_superhost,\\n    created_at,\\n    updated_at\\nFROM\\n    raw_hosts'}, True, True)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__run_hooks",
+        "macro_arguments": "('hooks', 'inside_transaction')",
+        "args": "([],)",
+        "kwargs": "{'inside_transaction': True}"
+    },
+    {
+        "macro_name": "dbt_macro__materialized_view_teardown",
+        "macro_arguments": "('backup_relation', 'intermediate_relation', 'post_hooks')",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_backup\">, <PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_tmp\">, [])",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__drop_relation_if_exists",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_backup\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__drop_relation",
+        "macro_arguments": "('relation',)",
+        "args": "()",
+        "kwargs": "{'relation': <PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_backup\">}"
+    },
+    {
+        "macro_name": "dbt_macro__default__drop_relation",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_backup\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__statement",
+        "macro_arguments": "('name', 'fetch_result', 'auto_begin', 'language')",
+        "args": "('drop_relation',)",
+        "kwargs": "{'auto_begin': False, 'caller': <Macro anonymous>}"
+    },
+    {
+        "macro_name": "dbt_macro__drop_materialized_view",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_backup\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__drop_materialized_view",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_backup\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__drop_relation_if_exists",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_tmp\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__drop_relation",
+        "macro_arguments": "('relation',)",
+        "args": "()",
+        "kwargs": "{'relation': <PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_tmp\">}"
+    },
+    {
+        "macro_name": "dbt_macro__default__drop_relation",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_tmp\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__statement",
+        "macro_arguments": "('name', 'fetch_result', 'auto_begin', 'language')",
+        "args": "('drop_relation',)",
+        "kwargs": "{'auto_begin': False, 'caller': <Macro anonymous>}"
+    },
+    {
+        "macro_name": "dbt_macro__drop_materialized_view",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_tmp\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__default__drop_materialized_view",
+        "macro_arguments": "('relation',)",
+        "args": "(<PostgresRelation \"airbnb\".\"dev\".\"src_hosts__dbt_tmp\">,)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__run_hooks",
+        "macro_arguments": "('hooks', 'inside_transaction')",
+        "args": "([],)",
+        "kwargs": "{'inside_transaction': False}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    },
+    {
+        "macro_name": "dbt_macro__query_comment_macro",
+        "macro_arguments": "('connection_name', 'node')",
+        "args": "('master', None)",
+        "kwargs": "{}"
+    }
+]
